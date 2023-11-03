@@ -1,0 +1,28 @@
+<div>
+    <h2 class="titulo">Tarefa</h2>
+
+    <div class="formulario">
+        <mat-form-field class="campo">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="titulo">
+        </mat-form-field>
+      
+        <mat-form-field class="campo">
+            <mat-label>Descrição</mat-label>
+            <textarea matInput [(ngModel)]="descricao"></textarea>
+        </mat-form-field>
+
+        <label>Prioridade</label>
+        <mat-radio-group class="prioridade-opcoes" [(ngModel)]="prioridade">
+            <mat-radio-button value="Baixa">Baixa</mat-radio-button>
+            <mat-radio-button value="Media">Média</mat-radio-button>
+            <mat-radio-button value="Alta">Alta</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="botao-salvar">
+        <button mat-fab color="primary" (click)="salvar()">
+            <mat-icon>save</mat-icon>
+        </button>
+    </div>
+</div>

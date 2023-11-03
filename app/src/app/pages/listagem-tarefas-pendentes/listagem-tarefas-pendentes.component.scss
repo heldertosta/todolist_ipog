@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.titulo {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.card-tarefa {
+    margin: 15px 15%;
+}
+
+.titulo-tarefa {
+    margin-top: 18px;
+}
+
+.descricao-tarefa {
+    margin-left: 44px;
+}
+
+.botao-editar {
+    position: fixed;
+    right: 15%;
+    margin-right: 90px;
+    margin-top: 15px;
+}
+
+.botao-excluir {
+    position: fixed;
+    right: 15%;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.botao-adicionar {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+}
+
+.botao-mostrar-todas {
+    position: fixed;
+    right: 15px;
+    bottom: 80px;
+}

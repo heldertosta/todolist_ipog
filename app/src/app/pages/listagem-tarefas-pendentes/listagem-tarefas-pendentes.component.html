@@ -1,0 +1,28 @@
+<div>
+    <h2 class="titulo">Tarefas Pendentes</h2>
+
+    <mat-card class="card-tarefa" *ngFor="let tarefa of tarefas">
+        <mat-checkbox [(ngModel)]="tarefa.concluida" (change)="marcar(tarefa)">
+            <h3 class="titulo-tarefa">{{ tarefa.titulo }}</h3>
+        </mat-checkbox>
+
+        <p class="descricao-tarefa">Prioridade: {{ tarefa.prioridade }}</p>
+
+        <p class="descricao-tarefa">{{ tarefa.descricao }}</p>
+
+        <button mat-button color="primary" class="botao-editar" (click)="editar(tarefa.id, tarefa.titulo, tarefa.descricao, tarefa.prioridade)">Editar</button>
+        <button mat-button color="accent" class="botao-excluir" (click)="excluir(tarefa.id)">Excluir</button>
+    </mat-card>
+
+    <div class="botao-mostrar-todas">
+        <button mat-fab color="primary" (click)="mostrarTodas()">
+            <mat-icon>check_circle</mat-icon>
+        </button>
+    </div>
+
+    <div class="botao-adicionar">
+        <button mat-fab color="primary" (click)="adicionar()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

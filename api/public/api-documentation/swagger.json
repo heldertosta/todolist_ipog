@@ -1,0 +1,304 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API - TodoList - Documentação",
+        "contact": {
+            "email": "helderatosta@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/tasks": {
+            "get": {
+                "tags": [
+                    "Listar Tarefas"
+                ],
+                "summary": "Listagem de Tarefas",
+                "description": "Este endpoint lista todas as tarefas cadastradas na base de dados",
+                "operationId": "7786da811325606208249ebc8d393d9a",
+                "responses": {
+                    "200": {
+                        "description": "Listagem",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "5"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Título da tarefa"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Descrição da tarefa cadastrada"
+                                        },
+                                        "priority": {
+                                            "type": "string",
+                                            "example": "Alta|Baixa|Média"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "false|true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Criação de uma nova tarefa"
+                ],
+                "summary": "Criar Tarefa",
+                "description": "Este endpoint é responsável pela criação de novas tarefas",
+                "operationId": "5b98f8f24a7b050c93dd4a189dfdd87e",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "priority",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Nova Tarefa"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Descrição da Tarefa"
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "example": "Alta"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "false"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nova tarefa criada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "plainTextToken": {
+                                            "type": "string",
+                                            "example": "Nova tarefa criada com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/{id}": {
+            "get": {
+                "tags": [
+                    "Listar Tarefa Única"
+                ],
+                "description": "Retornas a tarefa",
+                "operationId": "findTaskById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da tarefa",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listagem",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "5"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Título da tarefa"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Descrição da tarefa cadastrada"
+                                        },
+                                        "priority": {
+                                            "type": "string",
+                                            "example": "Alta|Baixa|Média"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "false|true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Atualizar Tarefa"
+                ],
+                "description": "Apaga a tarefa com o ID informado na URL",
+                "operationId": "updateTask",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da tarefa a ser atualizada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "priority",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Nova Tarefa"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Descrição da Tarefa"
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "example": "Alta"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "false"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Tarefa Atualizada!"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Excluir Tarefa"
+                ],
+                "description": "Apaga a tarefa com o ID informado na URL",
+                "operationId": "deleteTask",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da tarefa a ser deletada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Tarefa excluída"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/pendingtasks": {
+            "get": {
+                "tags": [
+                    "Listar Tarefas Pendentes"
+                ],
+                "summary": "Listar as tarefas pendentes",
+                "description": "Este endpoint lista apenas as tarefas que estão com o status como pendente",
+                "operationId": "0e690c8cfa6a6aad9e733277378a8689",
+                "responses": {
+                    "200": {
+                        "description": "Apresenta as Tarefa Pendentes",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "5"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Título da tarefa"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Descrição da tarefa cadastrada"
+                                        },
+                                        "priority": {
+                                            "type": "string",
+                                            "example": "Alta|Baixa|Média"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "false|true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
