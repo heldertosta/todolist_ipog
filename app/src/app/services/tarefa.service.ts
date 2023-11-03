@@ -9,17 +9,17 @@ export class TarefaService {
   constructor(private http: HttpClient) { }
 
   listarTodas() {
-    const url = `${this.urlBase}/listarTodas`
+    const url = `${this.urlBase}/tasks`
     return this.http.get<any>(url)
   }
 
   listarTodasPendentes() {
-    const url = `${this.urlBase}/pendentes`
+    const url = `${this.urlBase}/pendingtasks`
     return this.http.get<any>(url)
   }
 
   criar(titulo: string, descricao: string, prioridade: string) {
-    const url = `${this.urlBase}/criar`
+    const url = `${this.urlBase}/tasks`
     const tarefa = {
       titulo: titulo,
       descricao: descricao,
@@ -31,7 +31,7 @@ export class TarefaService {
   }
 
   editar(id: number, titulo: string, descricao: string, prioridade: string) {
-    const url = `${this.urlBase}/editar`
+    const url = `${this.urlBase}/tasks`
     const tarefa = {
       id: id,
       titulo: titulo,
